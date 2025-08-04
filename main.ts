@@ -1,8 +1,8 @@
+import { SqlJsDialect } from '@zenstackhq/kysely-sql-js';
 import { ZenStackClient } from '@zenstackhq/runtime';
-import { SqlJsDialect } from 'kysely-sql-js';
+import { inspect } from 'node:util';
 import initSqlJs from 'sql.js';
 import { schema } from './zenstack/schema';
-import { inspect } from 'node:util';
 
 async function main() {
   // initialize sql.js engine
