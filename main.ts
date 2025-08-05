@@ -16,7 +16,7 @@ async function main() {
   // push schema to the database (`$pushSchema` is for testing only)
   await db.$pushSchema();
 
-  // create a user with some postsØ
+  // create a user with some posts
   const user = await db.user.create({
     data: {
       email: 'u1@test.com',
