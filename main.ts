@@ -1,6 +1,5 @@
 import { SqlJsDialect } from '@zenstackhq/kysely-sql-js';
 import { ZenStackClient } from '@zenstackhq/runtime';
-import { inspect } from 'node:util';
 import initSqlJs from 'sql.js';
 import { schema } from './zenstack/schema';
 
@@ -38,7 +37,7 @@ async function main() {
     include: { posts: true },
   });
 
-  console.log(inspect(user, { colors: true }));
+  console.log(user);
 }
 
 main();
