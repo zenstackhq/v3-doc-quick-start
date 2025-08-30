@@ -68,7 +68,8 @@ export const schema = {
                 },
                 content: {
                     name: "content",
-                    type: "String"
+                    type: "String",
+                    optional: true
                 },
                 published: {
                     name: "published",

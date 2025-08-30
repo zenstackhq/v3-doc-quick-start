@@ -16,28 +16,32 @@ async function main() {
   await db.$pushSchema();
 
   // create a user with some posts
-  const user = await db.user.create({
+  await db.user.create({
     data: {
+      id: 1, 
       email: 'u1@test.com',
       posts: {
-        create: [
-          {
-            title: 'Post1',
-            content: 'My first post',
-            published: false,
-          },
-          {
-            title: 'Post2',
-            content: 'Just another post',
-            published: true,
-          },
-        ],
-      },
-    },
-    include: { posts: true },
+        create: [{ title: 'Post1' }, { title: 'Post2' }]
+      }
+    }
   });
 
-  console.log(user);
+  // high-level query API
+  const userWithPosts = await db.user.findFirst({
+    where: { id: 1 },
+    include: { posts: true }
+  });
+  console.log(userWithPosts);
+
+  // low-level SQL query builder API
+  const userPostJoin = await db
+    .$qb
+    .selectFrom('User')
+    .innerJoin('Post', 'Post.authorId', 'User.id')
+    .select(['User.id', 'User.email', 'Post.title'])
+    .where('User.id', '=', 1)
+    .execute();
+  console.log(userPostJoin);
 }
 
 main();
