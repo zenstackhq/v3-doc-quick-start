@@ -4,7 +4,7 @@
     "scripts": {
         "generate": "zen generate",
         "dev": "zen generate && tsx main.ts",
-        "up": "npm i @zenstackhq/cli@next @zenstackhq/orm@next"
+        "up": "npm i @zenstackhq/cli@latest @zenstackhq/orm@latest"
     },
     "devDependencies": {
         "@types/node": "^24.1.0",
